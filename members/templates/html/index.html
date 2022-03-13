@@ -29,10 +29,11 @@
 
     {% for project in projects %}
  <div class="project">
+     <a href="/view-project/{{project.id}}">
     <img src="{{project.project_pic.url}}" alt="project-img" class="project-img">
+     </a>
      <div class="p_details">
          <p class="name">{{project.name}}</p>
-
          <div class="details">
          <span>From: {{project.country}}</span>
              <span>{{project.posted_at}}</span>

@@ -8,4 +8,5 @@ urlpatterns = [
     path('login-user/', login_user, name='login-user'),
     path('logout/', logout_user, name='logout-user'),
     path('submit-project/', submit_project, name='submit-project'),
+    path('view-project/<int:id>', view_project, name='view-project'),
 ]

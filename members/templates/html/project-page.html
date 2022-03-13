@@ -1,0 +1,41 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %}<title>{{project.name}}</title>{% endblock %}
+ {% block css %}<link rel="stylesheet" href="{% static 'css/project-page.css' %}"> {% endblock %}
+
+{% block content %}
+
+<div class="projects">
+
+
+ <div class="upper-side">
+     <img class="project-pic" src="{{project.project_pic.url}}">
+
+     <div class="details">
+     <p class="name">{{project.name}}</p><br>
+         <p>{{project.description}}</p>
+     <span class="user">By <span class="username"> {{project.user}} </span><i>FROM</i> <span class="country">{{project.country}}</span> WITH <span class="rating">{{project.rating}}</span></span><br>
+    </div>
+ </div>
+
+  <form action="/action_page.php">
+        {% csrf_token %}
+
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" name="username"  id="username" autofocus>
+  </div>
+
+  <div class="form-group">
+      <label for="password">Password</label>
+    <input type="password" class="form-control" name="password" id="password">
+  </div>
+  <input type="submit">
+</form>
+
+</div>
+
+</body>
+</html>
+
+{% endblock %}

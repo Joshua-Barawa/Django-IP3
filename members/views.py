@@ -29,6 +29,12 @@ def submit_project(request):
     return render(request, 'html/project-form.html', {'form': form})
 
 
+@login_required(login_url='login-user/')
+def view_project(request, id):
+    project = Project.objects.get(id=id)
+    return render(request, 'html/project-page.html', {"project":project})
+
+
 def register_user(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
