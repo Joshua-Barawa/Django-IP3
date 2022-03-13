@@ -20,6 +20,9 @@ def submit_project(request):
             project = form.save(commit=False)
             project.user = request.user
             project.save()
+            prorating = Prorating()
+            prorating.pro_name = project
+            prorating.save()
             messages.success(request, "Project was submitted successful")
             return redirect('index-page')
     else:

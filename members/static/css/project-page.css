@@ -3,23 +3,25 @@
 .projects{
 display:flex;
 flex-direction:column;
+padding:40px 30px;
 }
 
 .upper-side{
-height: 60vh;
+height: 80vh;
 text-align:center;
 padding-top:20px;
-background-color:red;
+position:relative;
 }
 
 .project-pic{
 width:80%;
-height:550px;
+height:70%;
 }
 
 .name{
 font-weight:bold;
 font-size:40px;
+
 }
 
 .user{
@@ -37,5 +39,25 @@ font-weight:bold;
 font-size:20px;
 }
 
+.rate-form{
+width:500px;
+display:block;
+flex:0.5;
+}
 
+.comment-form{
+width:500px;
+display:block;
+flex:0.5;
+}
+
+.form-section{
+display:flex;
+justify-content:space-between;
+padding:20px 150px;
+}
+
+#comment{
+height:150px;
+}
 

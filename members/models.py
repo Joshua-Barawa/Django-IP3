@@ -31,5 +31,7 @@ class Prorating(models.Model):
     pro_name = models.ForeignKey(Project, blank=True, null=True, on_delete=models.CASCADE)
     design = models.IntegerField(default=0)
     usability = models.IntegerField(default=0)
-    creativity = models.IntegerField(default=0)
-    developer = models.IntegerField(default=0)
+    content = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.pro_name.name
