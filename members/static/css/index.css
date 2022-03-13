@@ -48,6 +48,26 @@ width: 100%;
 }
 
 .profile-pic{
-height: 40px;
-width: 40px;
+height: 30px;
+width: 30px;
+margin-right:7px;
+}
+
+.p_details{
+padding:15px 20px;
+}
+
+.details{
+ display:flex;
+ justify-content:space-between;
+ margin-bottom:12px;
+}
+
+.name{
+font-size:20px;
+font-weight:bold;
+}
+
+.postedby{
+font-weight:bold;
 }
