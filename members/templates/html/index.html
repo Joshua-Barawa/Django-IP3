@@ -25,7 +25,6 @@
 
  </div>
 
-
 <div class="projects">
 
     {% for project in projects %}
@@ -35,10 +34,14 @@
          <p class="name">{{project.name}}</p>
 
          <div class="details">
-         <span >From: {{project.country}}</span>
+         <span>From: {{project.country}}</span>
              <span>{{project.posted_at}}</span>
          </div>
-         <p><img class="profile-pic" src="{{project.user.profile.profile_pic.url}}" alt="d"> By <span class="postedby">{{project.user.username}}</span></p>
+
+         <div class="links">
+         <span><img class="profile-pic" src="{{project.user.profile.profile_pic.url}}" alt="d"> By <span class="postedby">{{project.user.username}}</span></span>
+       <span><a href="{{project.live_link}}" target="_blank"><i class="material-icons">language</i></a></span>
+       </div>
      </div>
 
  </div>

@@ -34,6 +34,8 @@ font-size:20px;
 
 .projects{
 padding:70px;
+display:flex;
+flex-wrap:wrap;
 }
 
 .project{
@@ -61,6 +63,12 @@ padding:15px 20px;
  display:flex;
  justify-content:space-between;
  margin-bottom:12px;
+}
+
+.links{
+ display:flex;
+ justify-content:space-between;
+
 }
 
 .name{
