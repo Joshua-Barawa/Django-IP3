@@ -18,7 +18,6 @@
   <p class="intro">Where developers share, rate and review projects</p>
     </div>
 
-
    <form class="form-inline my-2 my-lg-0 form">
       <input class="form-control mr-sm-2 search" type="search" placeholder="Search projects" aria-label="Search" size="50">
       <button class="btn btn-outline-success my-2 my-sm-0 src-btn" type="submit">Search</button>
@@ -27,13 +26,26 @@
  </div>
 
 
+<div class="projects">
+
+    {% for project in projects %}
+ <div class="project">
+    <img src="{{project.project_pic.url}}" alt="project-img" class="project-img">
+     <div>
+         <p>{{project.name}}</p>
+         <span class="details">From: {{project.country}}</span> <span class="details">{{project.posted_at}}</span>
+         <p><img class="profile-pic" src="{{project.user.profile.profile_pic.url}}" alt="d"> By <span class="postedby">{{project.user.username}}</span></p>
+     </div>
+
+ </div>
+    {% endfor %}
+</div>
 
 
 
 
 
 </div>
-<p>Hell world {{ request.user.username }}</p>
 
 </body>
 </html>

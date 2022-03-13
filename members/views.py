@@ -8,7 +8,8 @@ from .models import *
 
 @login_required(login_url='login-user/')
 def index(request):
-    return render(request, 'html/index.html', {})
+    projects = Project.objects.all()
+    return render(request, 'html/index.html', {'projects': projects})
 
 
 @login_required(login_url='login-user/')

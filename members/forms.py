@@ -24,12 +24,13 @@ class RegisterForm(UserCreationForm):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = ['project_pic', "name", "description", 'live_link']
+        fields = ['project_pic', "name", "description", 'country', 'live_link']
 
     def __init__(self, *args, **kwargs):
         super(ProjectForm, self).__init__(*args, **kwargs)
         self.fields['project_pic'].widget.attrs['class'] = 'form-control'
         self.fields['name'].widget.attrs['class'] = 'form-control'
         self.fields['description'].widget.attrs['class'] = 'form-control'
+        self.fields['country'].widget.attrs['class'] = 'form-control'
         self.fields['live_link'].widget.attrs['class'] = 'form-control'
 
