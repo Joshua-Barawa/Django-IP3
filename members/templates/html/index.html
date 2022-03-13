@@ -1,10 +1,32 @@
 {% extends 'html/base.html' %}
 {% load static %}
 {% block title %}<title>Awwards|Home</title>{% endblock %}
- {% block css %}<link href="{% static 'css/index.css' %}"> {% endblock %}
+ {% block css %}<link rel="stylesheet" href="{% static 'css/index.css' %}"> {% endblock %}
 
 {% block content %}
+<div>
+ <div class="upper-side">
+     <div class="intro-paragraph">
+    <p class="intro">Welcome To Awwwards</p>
+  <p class="intro">Where developers share, rate and review projects</p>
+    </div>
 
+
+   <form class="form-inline my-2 my-lg-0 form">
+      <input class="form-control mr-sm-2 search" type="search" placeholder="Search projects" aria-label="Search" size="50">
+      <button class="btn btn-outline-success my-2 my-sm-0 src-btn" type="submit">Search</button>
+    </form>
+
+
+ </div>
+
+
+
+
+
+
+
+</div>
 <p>Hell world {{ request.user.username }}</p>
 
 </body>

@@ -1,0 +1,31 @@
+
+
+.upper-side{
+background-color:black;
+height: 70vh;
+padding:70px 50px;
+text-align:center;
+align-items:center;
+}
+
+.intro{
+color:#fff;
+text-align:center;
+font-weight:bold;
+font-size:50px;
+}
+
+.form{
+display:block;
+padding:50px;
+}
+
+.search{
+padding:15px 10px;
+font-size:18px;
+}
+
+.src-btn{
+padding:14px 50px;
+font-size:20px;
+}
