@@ -1,0 +1,13 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %}<title>Awwards|Home</title>{% endblock %}
+ {% block css %}<link href="{% static 'css/index.css' %}"> {% endblock %}
+
+{% block content %}
+
+<p>Hell world {{ request.user.username }}</p>
+
+</body>
+</html>
+
+{% endblock %}

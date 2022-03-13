@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .forms import *
 
 
+@login_required(login_url='login-user/')
 def index(request):
-    return HttpResponse("Hello world")
+    user = request.user
+    return render(request, 'html/index.html', {})
 
 
 def register_user(request):
@@ -39,3 +42,9 @@ def login_user(request):
             return render(request, 'html/login.html', {})
 
     return render(request, 'html/login.html', {})
+
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, "successfully logged out")
+    return redirect('login-user')

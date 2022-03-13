@@ -10,11 +10,11 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="/">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
+{% if user.is_authenticated %}
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -25,9 +25,21 @@
 
       </li>
     </ul>
-     <a class="nav-link" href="#">Login</a>
-     <a class="nav-link" href="#">Register</a>
 
+   <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{ request.user.username }}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Profile</a>
+    <a class="dropdown-item" href="#">Edit Profile</a>
+    <a class="dropdown-item" href="/logout">Logout</a>
+  </div>
+</div>
+    {% else %}
+     <a class="nav-link" href="/login-user/">Login</a>
+     <a class="nav-link" href="/register-user/">Register</a>
+{% endif %}
   </div>
 </nav>
 
