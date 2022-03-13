@@ -1,4 +1,6 @@
-
+.bdy{
+background-color:#F5FFFA;
+}
 
 .upper-side{
 background-color:#36454F;
@@ -28,4 +30,24 @@ font-size:18px;
 .src-btn{
 padding:14px 50px;
 font-size:20px;
+}
+
+.projects{
+padding:70px;
+}
+
+.project{
+box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+height:500px;
+width:420px;
+}
+
+.project-img{
+height: 70%;
+width: 100%;
+}
+
+.profile-pic{
+height: 40px;
+width: 40px;
 }
