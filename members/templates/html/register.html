@@ -4,6 +4,11 @@
  {% block css %}<link href="{% static 'css/register.css' %}"> {% endblock %}
 {% block content %}
 <div class="container">
+   {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+     {{message}}
+     </div>
+    {% endfor %}
     <h4 claas="r-header">Register</h4>
 <form method="post">
     {% csrf_token %}

@@ -16,6 +16,11 @@ def register_user(request):
             form.save()
             messages.success(request, "Account created successfully")
             return redirect('login-user')
+        else:
+            for error in form.error_messages:
+                messages.error(request, form.error_messages[error])
+                print(error)
+                return render(request, 'html/register.html', {"form": form})
     else:
         form = RegisterForm()
     return render(request, 'html/register.html', {"form": form})
@@ -25,7 +30,7 @@ def login_user(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(request ,username=username, password=password)
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             return redirect('index-page')
