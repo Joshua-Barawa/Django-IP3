@@ -11,6 +11,23 @@ def index(request):
     return render(request, 'html/index.html', {})
 
 
+@login_required(login_url='login-user/')
+def submit_project(request):
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.user = request.user
+            project.save()
+            messages.success(request, "Project was submitted successful")
+            return redirect('index-page')
+    else:
+        form = ProjectForm()
+        return render(request, 'html/project-form.html', {'form': form})
+
+    return render(request, 'html/project-form.html', {'form': form})
+
+
 def register_user(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
