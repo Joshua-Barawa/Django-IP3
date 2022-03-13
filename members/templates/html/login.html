@@ -1,0 +1,28 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %}<title>Awwards|Register</title>{% endblock %}
+ {% block css %}<link href="{% static 'css/register.css' %}"> {% endblock %}
+{% block content %}
+<div class="container">
+    <h4 claas="r-header">Login</h4>
+<form method="post">
+    {% csrf_token %}
+
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="email" class="form-control" name="username"  id="username" autofocus>
+  </div>
+
+  <div class="form-group">
+      <label for="password">Password</label>
+    <input type="password" class="form-control" name="password" id="password">
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+</div>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %}<title>Awwards|Register</title>{% endblock %}
+ {% block css %}<link href="{% static 'css/register.css' %}"> {% endblock %}
+{% block content %}
+<div class="container">
+    <h4 claas="r-header">Register</h4>
+<form method="post">
+    {% csrf_token %}
+
+  <div class="form-group">
+    <label for="username">Username</label>
+    {{form.username}}
+  </div>
+
+  <div class="form-group">
+    <label for="firstname">First Name</label>
+    {{form.first_name}}
+  </div>
+  <div class="form-group">
+      <label for="email">Email</label>
+    {{form.email}}
+  </div>
+
+  <div class="form-group">
+      <label for="password">Password</label>
+    {{form.password1}}
+  </div>
+
+     <div class="form-group">
+      <label for="confirm-password">Confirm-Password</label>
+    {{form.password2}}
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+</body>
+</html>
+{% endblock %}
