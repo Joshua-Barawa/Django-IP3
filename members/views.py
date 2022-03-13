@@ -2,13 +2,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from .forms import *
+from .models import *
 
 
 @login_required(login_url='login-user/')
 def index(request):
-    user = request.user
     return render(request, 'html/index.html', {})
 
 
@@ -16,9 +15,13 @@ def register_user(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            profile = Profile()
+            profile.user = user
+            profile.save()
+            login(request, user)
             messages.success(request, "Account created successfully")
-            return redirect('login-user')
+            return redirect('index-page')
         else:
             for error in form.error_messages:
                 messages.error(request, form.error_messages[error])
