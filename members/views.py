@@ -87,6 +87,12 @@ def view_project(request, id):
     return render(request, 'html/project-page.html', {"project": project, "form": form, "c_form": c_form, "comments": comments})
 
 
+@login_required(login_url='login-user/')
+def my_profile(request):
+    profile = request.user.profile
+    return render(request, 'html/profile.html', {"profile": profile})
+
+
 def register_user(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)

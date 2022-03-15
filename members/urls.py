@@ -9,5 +9,5 @@ urlpatterns = [
     path('logout/', logout_user, name='logout-user'),
     path('submit-project/', submit_project, name='submit-project'),
     path('view-project/<int:id>', view_project, name='view-project'),
-    # path('rate-project/<int:id>', rate_project, name='rate-project'),
+    path('profile/', my_profile, name='profile'),
 ]

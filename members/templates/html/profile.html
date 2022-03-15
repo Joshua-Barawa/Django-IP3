@@ -1,0 +1,58 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %}<title>Awwards|Profile</title>{% endblock %}
+ {% block css %}<link href="{% static 'css/profile.css' %}"> {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Profile</h2>
+
+    <div id="profile" >
+        <div class="user-profile">
+                <img src={{profile.profile_pic.url}} alt="" />
+                <div id="all-details">
+                <div id="details">
+                <div>
+                <p>{{profile.user.first_name}}</p>
+                <a href="#" target="_blank" >@{{profile.user.username}}</a>
+                </div>
+                <div>
+                <p>Joined {{user.joined}}</p>
+                </div>
+                </div>
+               <div id="follow">
+               <p>Repos {{user.repos}}</p>
+               <p>Followers {{user.followers}}</p>
+               <p>Following {{user.following}}</p>
+               </div>
+               <p>Location: {{user.location}}</p>
+                </div>
+                </div>
+        </div>
+
+
+    <div id="repos">
+        <div class="user-repo" *ngFor='let repo of repos'>
+            <p>{{repo.name}}</p>
+               <p>{{repo.language}}</p>
+               <div id="other">
+               <p>Forks:{{repo.forks}}</p>
+               <p>Stars:{{repo.counts}}</p>
+               <p>Watchers: {{repo.watchers}}</p>
+               </div>
+              <a href="{{repo.html_url}}" target="_blank" >Source Code</a>
+            </div>`
+    </div>
+
+
+</div>
+
+
+
+
+
+</body>
+</html>
+
+{% endblock %}
