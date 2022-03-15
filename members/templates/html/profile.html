@@ -8,7 +8,7 @@
 <div class="container">
     <div id="profile" >
         <div class="user-profile">
-                <img src={{profile.profile_pic.url}} alt="" />
+                <img src={{profile.profile_pic.url}} alt="pic" />
                 <div id="all-details">
                 <div id="details">
                 <div>
@@ -38,30 +38,30 @@
     <div class="divide">
   <div class="form-group">
     <label for="username">Username</label>
-   <input type="text" class="form-control" name="username"  id="username" autofocus>
+   <input type="text" class="form-control" name="username"  value="{{profile.user.username}}" id="username" autofocus>
   </div>
 
   <div class="form-group">
-    <label for="fullname">Full Names</label>
-   <input type="text" class="form-control" name="fullname"  id="fullname">
+    <label for="fullname">First Name</label>
+   <input type="text" class="form-control" name="fullname" value="{{profile.user.first_name}}" id="fullname">
   </div>
 
   </div>
 
   <div class="form-group">
       <label for="email">Email</label>
-    <input type="email" class="form-control" name="email"  id="email" >
+    <input type="email" class="form-control" name="email" value="{{profile.user.email}}" id="email" >
   </div>
 
   <div class="form-group">
       <label for="profile_pic">Profile Pic</label>
-    <input type="file" class="form-control" name="profile_pic"  id="profile_pic">
+    <input type="file" class="form-control" name="profile_pic"  id="profile_pic" value="{{profile.profile_pic}}" accept="media/*" required="">
   </div>
 
 
      <div class="form-group">
       <label for="bio">Bio</label>
-         <textarea type="file" class="form-control" name="bio"  id="bio"></textarea>
+         <textarea type="text" class="form-control" name="bio" value="{{profile.caption}}" id="bio" required=""></textarea>
   </div>
 
   <button type="submit" class="btn btn-primary">Update</button>

@@ -34,14 +34,15 @@ justify-content:space-between;
     font-size:16px;
     text-align: left;
     color:white;
-    max-height:200px;
+    max-height:220px;
 
 }
 
 
 .user-profile img{
    padding:20px 30px;
-   height: 200px;
+   height: 220px;
+   width:250px;
    border-radius: 100% 100%;
 }
 
