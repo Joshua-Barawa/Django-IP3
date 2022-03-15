@@ -22,6 +22,9 @@
     <div class="form-section">
 
     <div>
+        {% for message in messages %}
+        {{message}}
+    {% endfor %}
          <h5>Rate Project(out of 10)</h5>
   <form class="rate-form" method="post">
         {% csrf_token %}

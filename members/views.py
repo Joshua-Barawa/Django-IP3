@@ -40,13 +40,21 @@ def view_project(request, id):
 
         if form.is_valid():
             pro = Prorating.objects.get(pro_name=project)
-            pro.count = pro.count + 1
-            pro.design = (int(pro.design) + int(form['design'].value())) / pro.count
-            pro.usability = (int(pro.usability) + int(form['usability'].value())) / pro.count
-            pro.content = (int(pro.content) + int(form['content'].value())) / pro.count
-            pro.save()
 
-            messages.success(request, "Project was submitted successful")
+            if int(form['design'].value()) > 10 or int(form['design'].value()) < 0:
+                messages.success(request, "Design cannot be less than 0 or greater than 10 ")
+            elif int(form['usability'].value()) > 10 or int(form['usability'].value()) < 0:
+                messages.success(request, "Usability cannot be less than 0 or greater than 10 ")
+            elif int(form['content'].value()) > 10 or int(form['content'].value()) < 0:
+                messages.success(request, "Content cannot be less than 0 or greater than 10 ")
+            else:
+                pro.count = pro.count + 1
+                pro.design = (int(pro.design) + int(form['design'].value())) / pro.count
+                pro.usability = (int(pro.usability) + int(form['usability'].value())) / pro.count
+                pro.content = (int(pro.content) + int(form['content'].value())) / pro.count
+                pro.save()
+                messages.success(request, "Project was rated/reviewed successful")
+
     else:
         form = RateForm()
     return render(request, 'html/project-page.html', {"project": project, 'form': form})
