@@ -89,8 +89,23 @@ def view_project(request, id):
 
 @login_required(login_url='login-user/')
 def my_profile(request):
+
+    user = request.user
     profile = request.user.profile
-    return render(request, 'html/profile.html', {"profile": profile})
+    projects = Project.objects.filter(user=request.user)
+    if request.method == "POST":
+        username = request.POST.get('username')
+        fullname = request.POST.get('fullname')
+        email = request.POST.get('email')
+        profile_pic = request.FILES['profile_pic'].read()
+        bio = request.POST.get("bio")
+
+        user = User.objects.filter(username=user.username).update(username=username, first_name=fullname, email=email)
+        profile = Profile.objects.filter(user=user).update(caption=bio)
+    else:
+        return render(request, 'html/profile.html', {"profile": profile, "projects": projects})
+
+    return render(request, 'html/profile.html', {"profile": profile, "projects": projects})
 
 
 def register_user(request):

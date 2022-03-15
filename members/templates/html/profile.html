@@ -1,48 +1,93 @@
 {% extends 'html/base.html' %}
 {% load static %}
 {% block title %}<title>Awwards|Profile</title>{% endblock %}
- {% block css %}<link href="{% static 'css/profile.css' %}"> {% endblock %}
+ {% block css %}<link rel="stylesheet" href="{% static 'css/profile.css' %}"> {% endblock %}
 
 {% block content %}
 
 <div class="container">
-    <h2>Profile</h2>
-
     <div id="profile" >
         <div class="user-profile">
                 <img src={{profile.profile_pic.url}} alt="" />
                 <div id="all-details">
                 <div id="details">
                 <div>
-                <p>{{profile.user.first_name}}</p>
-                <a href="#" target="_blank" >@{{profile.user.username}}</a>
+                <p>Full Name: {{profile.user.first_name}}</p>
+                <a href="#" target="_blank" >Username: {{profile.user.username}}</a>
                 </div>
                 <div>
-                <p>Joined {{user.joined}}</p>
+                <p>Email: {{profile.user.email}}</p>
                 </div>
                 </div>
-               <div id="follow">
-               <p>Repos {{user.repos}}</p>
-               <p>Followers {{user.followers}}</p>
-               <p>Following {{user.following}}</p>
-               </div>
-               <p>Location: {{user.location}}</p>
-                </div>
+               <p>Bio: {{profile.caption}}</p>
                 </div>
         </div>
 
+    <div class="">
+
+       {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+     {{message}}
+     </div>
+    {% endfor %}
+    <h4 claas="r-header">Update Profile</h4>
+
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="divide">
+  <div class="form-group">
+    <label for="username">Username</label>
+   <input type="text" class="form-control" name="username"  id="username" autofocus>
+  </div>
+
+  <div class="form-group">
+    <label for="fullname">Full Names</label>
+   <input type="text" class="form-control" name="fullname"  id="fullname">
+  </div>
+
+  </div>
+
+  <div class="form-group">
+      <label for="email">Email</label>
+    <input type="email" class="form-control" name="email"  id="email" >
+  </div>
+
+  <div class="form-group">
+      <label for="profile_pic">Profile Pic</label>
+    <input type="file" class="form-control" name="profile_pic"  id="profile_pic">
+  </div>
+
+
+     <div class="form-group">
+      <label for="bio">Bio</label>
+         <textarea type="file" class="form-control" name="bio"  id="bio"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+        </div>
+
+        </div>
 
     <div id="repos">
-        <div class="user-repo" *ngFor='let repo of repos'>
-            <p>{{repo.name}}</p>
-               <p>{{repo.language}}</p>
+
+        {% for project in projects %}
+
+        <div class="user-repo">
+              <a href="/view-project/{{project.id}}">
+            <img src={{project.project_pic.url}} alt="" />
+              </a>
+            <p>{{project.name}}</p>
+               <p>{{project.description}}</p>
                <div id="other">
-               <p>Forks:{{repo.forks}}</p>
-               <p>Stars:{{repo.counts}}</p>
-               <p>Watchers: {{repo.watchers}}</p>
+               <p>Rating: {{project.rating}}</p>
+               <p>Comments:{{projects.comments}}</p>
                </div>
-              <a href="{{repo.html_url}}" target="_blank" >Source Code</a>
+              <a href="{{project.live_link}}" target="_blank" >Visit Site</a>
             </div>`
+
+        {% endfor %}
     </div>
 
 
