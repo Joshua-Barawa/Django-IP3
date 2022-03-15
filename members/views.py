@@ -35,7 +35,21 @@ def submit_project(request):
 @login_required(login_url='login-user/')
 def view_project(request, id):
     project = Project.objects.get(id=id)
-    return render(request, 'html/project-page.html', {"project":project})
+    if request.method == "POST":
+        form = RateForm(request.POST)
+
+        if form.is_valid():
+            pro = Prorating.objects.get(pro_name=project)
+            pro.count = pro.count + 1
+            pro.design = (int(pro.design) + int(form['design'].value())) / pro.count
+            pro.usability = (int(pro.usability) + int(form['usability'].value())) / pro.count
+            pro.content = (int(pro.content) + int(form['content'].value())) / pro.count
+            pro.save()
+
+            messages.success(request, "Project was submitted successful")
+    else:
+        form = RateForm()
+    return render(request, 'html/project-page.html', {"project": project, 'form': form})
 
 
 def register_user(request):

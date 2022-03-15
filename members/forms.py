@@ -34,3 +34,15 @@ class ProjectForm(forms.ModelForm):
         self.fields['country'].widget.attrs['class'] = 'form-control'
         self.fields['live_link'].widget.attrs['class'] = 'form-control'
 
+
+class RateForm(forms.ModelForm):
+    class Meta:
+        model = Prorating
+        fields = ['design', "usability", "content"]
+
+    def __init__(self, *args, **kwargs):
+        super(RateForm, self).__init__(*args, **kwargs)
+        self.fields['design'].widget.attrs['class'] = 'form-control'
+        self.fields['usability'].widget.attrs['class'] = 'form-control'
+        self.fields['content'].widget.attrs['class'] = 'form-control'
+

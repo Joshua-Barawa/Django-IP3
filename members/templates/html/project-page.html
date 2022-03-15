@@ -15,6 +15,7 @@
      <p class="name">{{project.name}}</p><br>
          <p>{{project.description}}</p>
      <span class="user">By <span class="username"> {{project.user}} </span><i>FROM</i> <span class="country">{{project.country}}</span> WITH <span class="rating">{{project.rating}}</span></span><br>
+   <a class="link" href="{{project.live_link}}" target="_blank">Visit Site</a>
     </div>
  </div>
 
@@ -26,20 +27,20 @@
         {% csrf_token %}
 
   <div class="form-group">
-    <label for="design">Desgin</label>
-    <input type="number" name="design" class="form-control" id="design">
+    <label for="design">Design</label>
+      {{form.design}}
   </div>
 
   <div class="form-group">
       <label for="usability">Usability</label>
-    <input type="number" name="usability" class="form-control" id="usability">
+    {{form.usability}}
   </div>
 
       <div class="form-group">
       <label for="content">Content</label>
-    <input type="number" name="content" class="form-control" id="content">
+    {{form.content}}
   </div>
-  <input type="submit">
+      <button type="submit" class="btn btn-primary">Rate</button>
 </form>
 </div>
 

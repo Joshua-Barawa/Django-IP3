@@ -32,6 +32,7 @@ class Prorating(models.Model):
     design = models.IntegerField(default=0)
     usability = models.IntegerField(default=0)
     content = models.IntegerField(default=0)
+    count = models.IntegerField(default=0)
 
     def __str__(self):
         return self.pro_name.name
