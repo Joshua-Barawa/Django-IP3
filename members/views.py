@@ -52,7 +52,10 @@ def view_project(request, id):
                 pro.design = (int(pro.design) + int(form['design'].value())) / pro.count
                 pro.usability = (int(pro.usability) + int(form['usability'].value())) / pro.count
                 pro.content = (int(pro.content) + int(form['content'].value())) / pro.count
+                project.rating = (project.rating + (int(int(form['design'].value()) + int(form['usability'].value()) + int(form['content'].value()))) / 3) / pro.count
                 pro.save()
+                project.save()
+
                 messages.success(request, "Project was rated/reviewed successful")
 
     else:
