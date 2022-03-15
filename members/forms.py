@@ -46,3 +46,13 @@ class RateForm(forms.ModelForm):
         self.fields['usability'].widget.attrs['class'] = 'form-control'
         self.fields['content'].widget.attrs['class'] = 'form-control'
 
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['message']
+
+    def __init__(self, *args, **kwargs):
+        super(CommentForm, self).__init__(*args, **kwargs)
+        self.fields['message'].widget.attrs['class'] = 'form-control'
+

@@ -20,7 +20,6 @@ class Project(models.Model):
     country = models.CharField(max_length=100, default="No specified", null=False, blank=False)
     posted_at = models.DateField(default=datetime.date.today)
     live_link = models.URLField(null=True, blank=True)
-    comments = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
 
     def __str__(self):
@@ -36,3 +35,13 @@ class Prorating(models.Model):
 
     def __str__(self):
         return self.pro_name.name
+
+
+class Comment(models.Model):
+    pro_name = models.ForeignKey(Project, blank=True, null=True, on_delete=models.CASCADE)
+    commenter = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.commenter.username
+

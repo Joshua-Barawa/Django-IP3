@@ -31,9 +31,8 @@ def submit_project(request):
 
     return render(request, 'html/project-form.html', {'form': form})
 
-
 @login_required(login_url='login-user/')
-def view_project(request, id):
+def rate_project(request, id):
     project = Project.objects.get(id=id)
     if request.method == "POST":
         form = RateForm(request.POST)
@@ -55,12 +54,37 @@ def view_project(request, id):
                 project.rating = (project.rating + (int(int(form['design'].value()) + int(form['usability'].value()) + int(form['content'].value()))) / 3) / pro.count
                 pro.save()
                 project.save()
-
                 messages.success(request, "Project was rated/reviewed successful")
 
     else:
         form = RateForm()
     return render(request, 'html/project-page.html', {"project": project, 'form': form})
+
+
+@login_required(login_url='login-user/')
+def post_comment(request, id):
+    project = Project.objects.get(id=id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.pro_name = project
+            comment.commenter = request.user
+            comment.save()
+    else:
+        form = RateForm()
+    return render(request, 'html/project-page.html', {"project": project, 'form': form})
+
+
+@login_required(login_url='login-user/')
+def view_project(request, id):
+    project = Project.objects.get(id=id)
+    comments = Comment.objects.filter(pro_name=project)
+    form = RateForm()
+    c_form = CommentForm()
+    rate_project(request, id)
+    post_comment(request, id)
+    return render(request, 'html/project-page.html', {"project": project, "form": form, "c_form": c_form, "comments": comments})
 
 
 def register_user(request):

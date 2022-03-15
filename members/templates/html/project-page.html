@@ -55,11 +55,23 @@
         {% csrf_token %}
   <div class="form-group">
       <label for="comment">Comment</label>
-      <textarea type="text" name="comment" class="form-control" id="comment"></textarea>
+      {{c_form.message}}
   </div>
 
   <input type="submit">
 </form>
+
+ <div>
+    {% for comment in comments %}
+     <div>
+
+         <span><img class="profile-pic" src="{{comment.commenter.profile.profile_pic.url}}" alt="d"> By <span class="postedby">{{comment.commenter.username}}</span></span>
+         <p>{{comment.message}}</p>
+     </div>
+ {% endfor %}
+ </div>
+
+
 </div>
 
 
