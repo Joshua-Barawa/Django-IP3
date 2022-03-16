@@ -58,12 +58,12 @@ def rate_project(request, id):
                 messages.success(request, "Content cannot be less than 0 or greater than 10 ")
             else:
                 pro.count = pro.count + 1
-                pro.design = (int(pro.design) + int(form['design'].value())) / pro.count
-                pro.usability = (int(pro.usability) + int(form['usability'].value())) / pro.count
-                pro.content = (int(pro.content) + int(form['content'].value())) / pro.count
+                pro.design = (int(pro.design) + int(form['design'].value())) / 2
+                pro.usability = (int(pro.usability) + int(form['usability'].value())) / 2
+                pro.content = (int(pro.content) + int(form['content'].value())) / 2
                 project.rating = (project.rating + (
                     int(int(form['design'].value()) + int(form['usability'].value()) + int(
-                        form['content'].value()))) / 3) / pro.count
+                        form['content'].value()))) / 3) / 2
                 pro.save()
                 project.save()
                 messages.success(request, "Project was rated/reviewed successful")
@@ -92,12 +92,13 @@ def post_comment(request, id):
 def view_project(request, id):
     project = Project.objects.get(id=id)
     comments = Comment.objects.filter(pro_name=project)
+    rating = Prorating.objects.get(pro_name=project)
     form = RateForm()
     c_form = CommentForm()
     rate_project(request, id)
     post_comment(request, id)
     return render(request, 'html/project-page.html',
-                  {"project": project, "form": form, "c_form": c_form, "comments": comments})
+                  {"project": project, "form": form, "c_form": c_form, "comments": comments, "rating":rating})
 
 
 @login_required(login_url='login-user/')

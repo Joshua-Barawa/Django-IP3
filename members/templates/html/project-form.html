@@ -1,7 +1,7 @@
 {% extends 'html/base.html' %}
 {% load static %}
-{% block title %}<title>Awwards|Login</title>{% endblock %}
- {% block css %}<link href="{% static 'css/register.css' %}"> {% endblock %}
+{% block title %}<title>Awwards|Post</title>{% endblock %}
+ {% block css %}<link rel="stylesheet" href="{% static 'css/project-form.css' %}"> {% endblock %}
 
 {% block content %}
 <div class="container">
@@ -11,8 +11,7 @@
      </div>
     {% endfor %}
 
- <h4 claas="r-header">Submit Project</h4>
-<form method="post" enctype="multipart/form-data">
+<form class="p-form" method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
   <div class="form-group">

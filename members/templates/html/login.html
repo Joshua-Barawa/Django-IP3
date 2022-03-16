@@ -1,7 +1,7 @@
 {% extends 'html/base.html' %}
 {% load static %}
 {% block title %}<title>Awwards|Login</title>{% endblock %}
- {% block css %}<link href="{% static 'css/register.css' %}"> {% endblock %}
+ {% block css %}<link rel="stylesheet" href="{% static 'css/login.css' %}"> {% endblock %}
 
 {% block content %}
 <div class="container">
@@ -10,8 +10,8 @@
      {{message}}
      </div>
     {% endfor %}
-    <h4 claas="r-header">Login</h4>
-<form method="post">
+<h4 class="l-header">Login</h4>
+<form class="login-form" method="post">
     {% csrf_token %}
 
   <div class="form-group">

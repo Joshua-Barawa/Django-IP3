@@ -30,7 +30,7 @@ class ProjectForm(forms.ModelForm):
         super(ProjectForm, self).__init__(*args, **kwargs)
         self.fields['project_pic'].widget.attrs['class'] = 'form-control'
         self.fields['name'].widget.attrs['class'] = 'form-control'
-        self.fields['description'].widget.attrs['class'] = 'form-control'
+        self.fields['description'].widget.attrs['class'] = 'form-control description'
         self.fields['country'].widget.attrs['class'] = 'form-control'
         self.fields['live_link'].widget.attrs['class'] = 'form-control'
 
@@ -54,5 +54,5 @@ class CommentForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CommentForm, self).__init__(*args, **kwargs)
-        self.fields['message'].widget.attrs['class'] = 'form-control'
+        self.fields['message'].widget.attrs['class'] = 'form-control c-field'
 

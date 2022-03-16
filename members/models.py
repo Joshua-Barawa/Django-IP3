@@ -23,7 +23,7 @@ class Project(models.Model):
     rating = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Prorating(models.Model):
@@ -34,7 +34,7 @@ class Prorating(models.Model):
     count = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.pro_name.name
+        return str(self.pro_name.name)
 
 
 class Comment(models.Model):
@@ -43,5 +43,5 @@ class Comment(models.Model):
     message = models.TextField()
 
     def __str__(self):
-        return self.commenter.username
+        return str(self.commenter.username)
 

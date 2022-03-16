@@ -18,17 +18,19 @@
      <div class="details">
      <p class="name">{{project.name}}</p><br>
      <span class="user">By <span class="username"> {{project.user}} </span><i>FROM</i> <span class="country">{{project.country}}</span> WITH <span class="a-rating">{{project.rating}}</span></span><br>
-<<div class="rating">
-         <span class="rt"><p class="rate">{{rating.design}}</p>DESIGN</span>
-         <span class="rt"><p class="rate">{{rating.usability}}</p>USABILITY</span>
-         <span class="rt"><p class="rate">{{rating.content}}</p>CONTENT</span>
+<div class="rating">
+         <span class="rt"><p class="rate" style="border:solid 2px #0000FF;">{{rating.design}}</p>DESIGN</span>
+         <span class="rt"><p class="rate" style="border:solid 2px #00CC99;">{{rating.usability}}</p>USABILITY</span>
+         <span class="rt"><p class="rate" style="border:solid 2px #B0BF1A;">{{rating.content}}</p>CONTENT</span>
          </div>
    <a class="link" href="{{project.live_link}}" target="_blank">Visit Site</a>
+         <p class="sod"><span class="ss">Site of the Day </span>{{project.posted_at}} </p>
     </div>
  </div>
 
 
-
+<div>
+    <p class="no-v"><span class="no">Nominees</span> We need your vote!</p>
 <div class="projects">
 
     {% for project in projects %}
@@ -53,7 +55,7 @@
     {% endfor %}
 </div>
 
-
+</div>
 
 
 

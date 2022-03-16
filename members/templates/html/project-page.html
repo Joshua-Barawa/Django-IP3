@@ -14,7 +14,14 @@
      <div class="details">
      <p class="name">{{project.name}}</p><br>
          <p>{{project.description}}</p>
-     <span class="user">By <span class="username"> {{project.user}} </span><i>FROM</i> <span class="country">{{project.country}}</span> WITH <span class="rating">{{project.rating}}</span></span><br>
+         <span class="user">By <span class="username"> {{project.user}} </span><i>FROM</i> <span class="country">{{project.country}}</span> WITH <span class="a-rating">{{project.rating}}</span></span><br>
+
+         <div class="rating">
+         <span class="rt"><p class="rate" style="border:solid 2px #0000FF;">{{rating.design}}</p>DESIGN</span>
+         <span class="rt"><p class="rate" style="border:solid 2px #00CC99;">{{rating.usability}}</p>USABILITY</span>
+         <span class="rt"><p class="rate" style="border:solid 2px #B0BF1A;">{{rating.content}}</p>CONTENT</span>
+         </div>
+
    <a class="link" href="{{project.live_link}}" target="_blank">Visit Site</a>
     </div>
  </div>
@@ -22,10 +29,17 @@
     <div class="form-section">
 
     <div>
-        {% for message in messages %}
+ {% for message in messages %}
+        <div class="alert alert-info" role="alert">
         {{message}}
-    {% endfor %}
-         <h5>Rate Project(out of 10)</h5>
+        </div>
+ {% endfor %}
+
+
+
+
+
+         <h5>Rate Me (out of 10)</h5>
   <form class="rate-form" method="post">
         {% csrf_token %}
 
@@ -58,7 +72,7 @@
       {{c_form.message}}
   </div>
 
-  <input type="submit">
+     <button type="submit" class="btn btn-primary c-btn">Comment</button>
 </form>
 
  <div>
@@ -66,7 +80,7 @@
      <div>
 
          <span><img class="profile-pic" src="{{comment.commenter.profile.profile_pic.url}}" alt="d"> By <span class="postedby">{{comment.commenter.username}}</span></span>
-         <p>{{comment.message}}</p>
+         <p class="c-message">{{comment.message}}</p>
      </div>
  {% endfor %}
  </div>

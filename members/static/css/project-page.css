@@ -16,6 +16,7 @@ position:relative;
 width:100%;
 height:100%;
 z-index:-1;
+filter: brightness(50%);
 }
 
 .name{
@@ -41,7 +42,7 @@ z-index:999;
 
 .link{
 position:absolute;
-top:70%;
+top:90%;
 left: 5%;
 transform: translate(-50%, -50%);
 background-color:#40E0D0;
@@ -51,6 +52,10 @@ color:#fff;
 border-radius:15px;
 font-size:18px;
 text-decoration: none;
+}
+
+.c-field{
+height:100px;
 }
 
 .username{
@@ -66,15 +71,19 @@ font-size:20px;
 }
 
 .rate-form{
-width:500px;
+width:400px;
 display:block;
 flex:0.5;
 }
 
 .comment-form{
-width:500px;
+width:400px;
 display:block;
 flex:0.5;
+}
+
+.c-btn{
+margin-bottom:10px;
 }
 
 .form-section{
@@ -87,3 +96,41 @@ padding:20px 150px;
 height:150px;
 }
 
+
+.rate{
+background-color:red;
+font-size:30px;
+padding:35px 50px;
+border-radius:100%;
+margin:7px 20px;
+background-color:transparent;
+border:solid 2px red;
+}
+
+.rating{
+display:flex;
+position:absolute;
+top:60%;
+left: 38%;
+color:white;
+}
+
+
+.rt{
+font-weight:10;
+font-size:17px;
+}
+
+.a-rating{
+font-size:20px;
+font-weight:bold;
+}
+
+.profile-pic{
+width:40px;
+height: 40px;
+}
+
+.c-message{
+padding-left:50px;
+}
