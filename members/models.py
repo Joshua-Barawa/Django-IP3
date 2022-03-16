@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
+from cloudinary.models import CloudinaryField
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, blank=True, null=True, on_delete=models.CASCADE)
-    profile_pic = models.ImageField(upload_to='media', default='media/default.png')
+    profile_pic = CloudinaryField()
     caption = models.TextField(max_length=200)
 
     def __str__(self):
@@ -14,7 +15,7 @@ class Profile(models.Model):
 
 class Project(models.Model):
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
-    project_pic = models.ImageField(upload_to='media', default='media/default.png')
+    project_pic = CloudinaryField()
     name = models.CharField(max_length=100, null=True, blank=True)
     description = models.TextField(max_length=150, null=False, blank=False)
     country = models.CharField(max_length=100, default="No specified", null=False, blank=False)
