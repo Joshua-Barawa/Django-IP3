@@ -7,23 +7,27 @@
 
 <div class="bdy">
      {% for message in messages %}
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-warning" role="alert">
      {{message}}
      </div>
     {% endfor %}
 
  <div class="upper-side">
-     <div class="intro-paragraph">
-    <p class="intro">Welcome To Awwwards</p>
-  <p class="intro">Where developers share, rate and review projects</p>
+     <img class="project-pic" src="{{project.project_pic.url}}">
+
+     <div class="details">
+     <p class="name">{{project.name}}</p><br>
+     <span class="user">By <span class="username"> {{project.user}} </span><i>FROM</i> <span class="country">{{project.country}}</span> WITH <span class="a-rating">{{project.rating}}</span></span><br>
+<<div class="rating">
+         <span class="rt"><p class="rate">{{rating.design}}</p>DESIGN</span>
+         <span class="rt"><p class="rate">{{rating.usability}}</p>USABILITY</span>
+         <span class="rt"><p class="rate">{{rating.content}}</p>CONTENT</span>
+         </div>
+   <a class="link" href="{{project.live_link}}" target="_blank">Visit Site</a>
     </div>
-
-   <form class="form-inline my-2 my-lg-0 form">
-      <input class="form-control mr-sm-2 search" type="search" placeholder="Search projects" aria-label="Search" size="50">
-      <button class="btn btn-outline-success my-2 my-sm-0 src-btn" type="submit">Search</button>
-    </form>
-
  </div>
+
+
 
 <div class="projects">
 
@@ -33,7 +37,7 @@
     <img src="{{project.project_pic.url}}" alt="project-img" class="project-img">
      </a>
      <div class="p_details">
-         <p class="name">{{project.name}}</p>
+         <p class="names">{{project.name}}</p>
          <div class="details">
          <span>From: {{project.country}}</span>
              <span>{{project.posted_at}}</span>
