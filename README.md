@@ -29,7 +29,7 @@ An application where developers meet, share and rate projects based on different
 ## Support and contact details
 * If you get any issue contact mwamlandabarawa@gmail.com
 
-### USE OUR API TO FETCH DATE
+### USE OUR API
 * Fetch Projects ----> https://awwards-today.herokuapp.com/project-list/
 * Fetch Users ------> https://awwards-today.herokuapp.com/user-list/
 
