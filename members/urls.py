@@ -10,4 +10,6 @@ urlpatterns = [
     path('submit-project/', submit_project, name='submit-project'),
     path('view-project/<int:id>', view_project, name='view-project'),
     path('profile/', my_profile, name='profile'),
+    path('project-list/', project_list, name='project-list'),
+    path('user-list/', user_list, name='user-list'),
 ]

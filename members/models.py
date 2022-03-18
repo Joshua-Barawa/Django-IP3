@@ -6,7 +6,7 @@ from cloudinary.models import CloudinaryField
 
 class Profile(models.Model):
     user = models.OneToOneField(User, blank=True, null=True, on_delete=models.CASCADE)
-    profile_pic = CloudinaryField()
+    profile_pic = CloudinaryField('image', null=True)
     caption = models.TextField(max_length=200)
 
     def __str__(self):

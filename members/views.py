@@ -4,6 +4,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from .models import *
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import *
 
 
 @login_required(login_url='login-user/')
@@ -98,7 +101,7 @@ def view_project(request, id):
     rate_project(request, id)
     post_comment(request, id)
     return render(request, 'html/project-page.html',
-                  {"project": project, "form": form, "c_form": c_form, "comments": comments, "rating":rating})
+                  {"project": project, "form": form, "c_form": c_form, "comments": comments, "rating": rating})
 
 
 @login_required(login_url='login-user/')
@@ -158,3 +161,17 @@ def logout_user(request):
     logout(request)
     messages.success(request, "successfully logged out")
     return redirect('login-user')
+
+
+@api_view(["GET"])
+def project_list(request):
+    projects = Project.objects.all()
+    serializer = ProjectSerializer(projects, many=True)
+    return Response(serializer.data)
+
+
+@api_view(["GET"])
+def user_list(request):
+    users = User.objects.all()
+    serializer = UserSerializer(users, many=True)
+    return Response(serializer.data)
