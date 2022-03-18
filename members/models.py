@@ -10,7 +10,7 @@ class Profile(models.Model):
     caption = models.TextField(max_length=200)
 
     def __str__(self):
-        return self.user.username
+        return str(self.user.username)
 
 
 class Project(models.Model):
